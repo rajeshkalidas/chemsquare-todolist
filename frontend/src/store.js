@@ -1,5 +1,5 @@
 import { useState } from "react";
-
+import {compareValues} from "./helpers/helper";
 import axios from 'axios';
 
 export const useInputValue = (initialValue = "") => {
@@ -41,9 +41,8 @@ export const useTodos = (initialValue = []) => {
     getTodos: () => {
       axios.get('/getTodo')
       .then((response)=> {
-        let todos = JSON.parse(JSON.stringify(response.data))
-        setTodos(todos.result)
-        //console.log(todos.message)
+        const todos = JSON.parse(JSON.stringify(response.data))
+        setTodos(todos.result.sort(compareValues("todoName")))
       })
       .catch((error)=> {
         console.log("error to save", error)
