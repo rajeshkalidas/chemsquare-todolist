@@ -1,0 +1,26 @@
+{
+  "name": "backendapplication",
+  "version": "1.0.0",
+  "description": "create backend application to interac with react",
+  "main": "server.js",
+  "scripts": {
+    "test": "cd frontend && npm test",
+    "start": "nodemon server.js",
+    "getDependencies": "npm install && cd frontend && npm install",
+    "dev": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\"",
+    "server": "npm start",
+    "client": "cd frontend && npm start"
+  },
+  "author": "Rajesh Kalidas",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "nodemon": "^2.0.2",
+    "sqlite3": "^4.1.1"
+  },
+  "devDependencies": {
+    "concurrently": "^5.1.0"
+  }
+}
