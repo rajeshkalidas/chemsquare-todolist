@@ -1,4 +1,4 @@
-import React, { memo } from "react";
+import React, { memo, useEffect } from "react";
 import { useInputValue, useTodos } from "./store";
 import {AddTodo, TodoList}  from "./components";
 
@@ -6,15 +6,15 @@ const App = memo(() => {
   const { inputValue, changeInput, clearInput, keyInput } = useInputValue();
   const { todos, addTodo, getTodos, removeTodo } = useTodos();
 
-  const clearInputAndAddTodo = _ => {
+  useEffect(() => getTodos());
+
+  const clearInputAndAddTodo = () => {
     clearInput();
     addTodo(inputValue);
-    getTodos();
   };
 
   const removeAndRetrieveTodos = idx => {
     removeTodo(idx);
-    getTodos()
   }
 
   return (
